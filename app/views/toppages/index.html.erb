@@ -1,8 +1,17 @@
 <h1>トップページだよ</h1>
 
-<div class="text-center">
-  <h3>ようこそ、HabiLogへ！</h3>
+<% if logged_in? %>
+  <!--ログイン時の記述をする-->
+  <p><%= current_user.name %>がログイン</p>
+  <%= link_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-sm btn-danger' %>
+<% else %>
+
+  <div class="text-center">
+    <h3>ようこそ、HabiLogへ！</h3>
   
-  <%= link_to 'アカウント作成', signup_path, class: 'btn btn-lg btn-primary' %>
-  
-</div>
+    <%= link_to 'アカウント作成', signup_path, class: 'btn btn-lg btn-primary' %>
+    <%= link_to 'ログイン', login_path, class: 'btn btn-lg btn-success' %>
+  </div>
+
+
+<% end %>
