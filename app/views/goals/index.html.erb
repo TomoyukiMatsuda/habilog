@@ -1,0 +1,15 @@
+<ul class="list-unstyled">
+  <% @goals.each do |goal| %>
+    <li class="media mb-3">
+      <div class="media-body">
+        <div>
+          <h5>＜目標＞</h5><span class="text-muted">目標設定時 <%= goal.created_at %></span>
+          <p><%= goal.name %></p>
+          <%= link_to '目標を編集', edit_goal_path(goal), class: 'btn btn-sm btn-success' %>
+          <%= link_to '目標を削除', goal_path(goal), method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: '本当に削除してもよろしいですか？' } %>
+        </div>
+      </div>
+    </li>
+  <% end %>
+  <%= paginate @goals %>
+</ul>
