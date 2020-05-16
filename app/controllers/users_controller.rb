@@ -11,17 +11,31 @@ class UsersController < ApplicationController
     
     if @user.save
       flash[:success] = 'アカウントを作成しました'
+      session[:user_id] = @user.id # sessionにuser_idを格納することでアカウント作成と同時にログイン
       redirect_to root_url
     else
       flash.now[:danger] = 'アカウントの作成に失敗しました'
       render :new
     end
   end
+  
+  def show
+    @user = User.find(params[:id])
+  end
 
   def edit
+    @user = User.find(params[:id])
   end
 
   def update
+    @user = User.find(params[:id])
+    if @user.update_attributes(user_params)
+      flash[:success] = 'ユーザ情報を更新しました'
+      redirect_to @user
+    else
+      flash.now[:danger] = 'ユーザ情報の更新に失敗しました'
+      render :edit
+    end
   end
   
   private

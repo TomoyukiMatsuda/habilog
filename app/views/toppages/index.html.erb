@@ -4,6 +4,7 @@
   <!--ログイン時の記述をする-->
   <p><%= current_user.name %>がログイン</p>
   <%= link_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-sm btn-danger' %>
+  <%= link_to 'アカウント情報詳細', current_user, class: 'btn btn-sm btn-success' %>
 <% else %>
 
   <div class="text-center">
