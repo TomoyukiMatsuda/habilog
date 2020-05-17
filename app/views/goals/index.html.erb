@@ -4,7 +4,11 @@
       <div class="media-body">
         <div>
           <h5>＜目標＞</h5><span class="text-muted">目標設定時 <%= goal.created_at %></span>
-          <p><%= goal.name %></p>
+          <p><strong><%= goal.name %></strong></p>
+          <% goal.good_habits.each do |good_habit| %>
+            <p>習慣：<%= good_habit.name %> <%= link_to '削除', "/goals/#{goal.id}/good_habits/#{good_habit.id}", method: :delete, data: { confirm: '習慣を削除してもよろしいですか？' } %></p>
+          <% end %>
+          <%= link_to '習慣を追加', new_goal_good_habit_url(goal), class: 'btn btn-sm btn-primary' %>
           <%= link_to '目標を編集', edit_goal_path(goal), class: 'btn btn-sm btn-success' %>
           <%= link_to '目標を削除', goal_path(goal), method: :delete, class: 'btn btn-sm btn-danger', data: { confirm: '本当に削除してもよろしいですか？' } %>
         </div>

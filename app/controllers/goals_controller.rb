@@ -4,7 +4,7 @@ class GoalsController < ApplicationController
   
   
   def index
-    @goals = current_user.goals.order(id: :desc).page(params[:page])
+    @goals = current_user.goals.order(id: :desc).page(params[:page]).per(5)
   end
 
   def new
@@ -16,7 +16,7 @@ class GoalsController < ApplicationController
     
     if @goal.save
       flash[:success] = '新しい目標を設定しました'
-      redirect_to goals_path #後ほど習慣登録画面に遷移するように変更
+      redirect_to new_goal_good_habit_url(@goal)
     else
       flash.now[:danger] = '目標設定に失敗しました'
       render :new
