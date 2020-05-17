@@ -2,9 +2,11 @@
 
 <% if logged_in? %>
   <!--ログイン時の記述をする-->
-  <p><%= current_user.name %>がログイン</p>
+  <p><%= current_user.name %>がログイン中</p>
   <%= link_to 'ログアウト', logout_path, method: :delete, class: 'btn btn-sm btn-danger' %>
-  <%= link_to 'アカウント情報詳細', current_user, class: 'btn btn-sm btn-success' %>
+  <%= link_to "#{current_user.name}詳細", current_user, class: 'btn btn-sm btn-success' %>
+  <%= link_to '新しい目標を設定', new_goal_path, class: 'btn btn-sm btn-primary' %>
+  <%= link_to '目標一覧', goals_path, class: 'btn btn-sm btn-info' %>
 <% else %>
 
   <div class="text-center">
