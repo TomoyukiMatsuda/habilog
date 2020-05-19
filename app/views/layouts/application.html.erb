@@ -25,15 +25,13 @@
     <script defer src="https://use.fontawesome.com/releases/v5.7.2/js/all.js"></script>  </head>
 
   <body>
-    <%= render 'layouts/sidebar' %>
+    <%= render 'layouts/navbar' %>
     
     <div class="contaier">
     
       <%= render 'layouts/flash_messages' %>
-    
-      <%= yield %>
       
-    <%= link_to 'トップページ', root_url %>
+      <%= yield %>
       
     </div>
   </body>

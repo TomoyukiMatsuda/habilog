@@ -11,4 +11,7 @@ Rails.application.routes.draw do
   resources :goals, only: [:index, :new, :create, :edit, :update, :destroy] do
     resources :good_habits, only: [:new, :create, :destroy]
   end
+  
+  resources :good_logs, only: [:create, :destroy]
+  resources :logs, only: [:index]
 end

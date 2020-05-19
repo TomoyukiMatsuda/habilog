@@ -1,0 +1,8 @@
+<h1>記録情報</h1>
+
+  <% @good_logs.each do |good_log| %>
+    <div>
+      <h3>習慣:<%= good_log.good_habit.name %> 設定日:<%= l good_log.good_habit.created_at %></h3>
+      <p>チェック:<%= good_log.log %></p>
+    </div>
+  <% end %>

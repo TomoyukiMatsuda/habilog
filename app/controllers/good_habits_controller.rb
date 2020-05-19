@@ -1,5 +1,7 @@
 class GoodHabitsController < ApplicationController
-  
+  before_action :require_user_logged_in
+  # correct_user実装する？
+
   def new
     @goal = Goal.find(params[:goal_id])
     @good_habit = GoodHabit.new
