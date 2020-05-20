@@ -13,8 +13,8 @@
             <p><strong><%= goal.name %></strong></p>
             <% goal.good_habits.each do |good_habit| %>
             
-              <% if good_habit.finished? %>
-                <p>                
+              <% if good_habit.log?(Date.current) %>
+                <p>
                   <%= good_habit.name %>
                   <%= link_to '元に戻す', good_log_path(good_habit), method: :delete, class: 'btn btn-secondary btn-sm' %>
                 </p>
