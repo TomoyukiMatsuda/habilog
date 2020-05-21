@@ -12,7 +12,7 @@
             
             <p>現在<%= good_habit.days %>日目、<%= counts(good_habit) %>日間習慣化できています</p>
             
-            <% if daily(good_habit) && good_habit.log?(Date.yesterday) %>
+            <% if daily(good_habit) %>
               <p><%= daily(good_habit) %>日連続中！</p>
             <% end %>
             

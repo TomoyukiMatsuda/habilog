@@ -8,9 +8,9 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <% if logged_in? %>
-          <li class="nav-item"><%= link_to '新しい目標設定', new_goal_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to '新しい目標を登録', new_goal_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to '目標一覧', goals_path, class: 'nav-link' %></li>
-          <li class="nav-item"><%= link_to '頑張り記録', logs_path, class: 'nav-link' %></li>
+          <li class="nav-item"><%= link_to '今日までのがんばり', logs_path, class: 'nav-link' %></li>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
             <ul class="dropdown-menu dropdown-menu-right">

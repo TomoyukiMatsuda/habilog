@@ -1,41 +1,5 @@
-<h1>トップページ</h1>
-
 <% if logged_in? %>
-  <!--ログイン時の記述をする-->
-
-
-  <ul class="list-unstyled">
-    <% @goals.each do |goal| %>
-      <li class="media mb-3">
-        <div class="media-body">
-          <div>
-            <h5>＜目標＞</h5><span class="text-muted">目標設定日 <%= l goal.created_at %></span>
-            <p><strong><%= goal.name %></strong></p>
-            <% goal.good_habits.each do |good_habit| %>
-            
-              <% if good_habit.log?(Date.current) %>
-                <p>
-                  <%= good_habit.name %>
-                  <%= link_to '元に戻す', good_log_path(good_habit), method: :delete, class: 'btn btn-secondary btn-sm' %>
-                </p>
-              <% else %>
-                <p>
-                  <%= form_with model: @good_log, local: true do |f| %>
-                    <%= good_habit.name %>
-                    <%= f.hidden_field :log, value: 1 %>
-                    <%= f.hidden_field :good_habit_id, value: good_habit.id %>
-                    <%= f.submit 'やれた！', class: 'btn btn-success btn-sm' %>
-                  <% end %>
-                </p>
-              <% end %>
-              
-            <% end %>
-          </div>
-        </div>
-      </li>
-    <% end %>
-    <%= paginate @goals %>
-  </ul>
+  <%= render 'goals/goals', goals: @goals, good_log: @good_log %>
 
 <% else %>
 
@@ -45,6 +9,5 @@
     <%= link_to 'アカウント作成', signup_path, class: 'btn btn-lg btn-primary' %>
     <%= link_to 'ログイン', login_path, class: 'btn btn-lg btn-success' %>
   </div>
-
 
 <% end %>

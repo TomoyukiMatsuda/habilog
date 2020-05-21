@@ -1,0 +1,20 @@
+<% goals.each do |goal| %>
+
+  <h4 class="text-center">目標：<%= goal.name %></h4>
+  <div class="row">
+    <div class="box-2 col-sm-12">
+      <table class="table">
+        <thead>
+          <th>
+            <h5>やるべき習慣</h5>
+          </th>
+          <th></th>
+        </thead>
+        <tbody class="text-center">
+          <%= render 'good_habits/good_habits', goal: goal, good_log: @good_log %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+<% end %>
