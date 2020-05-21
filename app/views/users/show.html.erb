@@ -1,12 +1,17 @@
-<div class="text-center">
-  <h1>アカウント情報詳細</h1>
-</div>
+<h1 class="text-center">マイページ</h1>
 
-<div>
-  <%= @user.name %><br>
-  <%= @user.age %><br>
-  <%= simple_format(@user.profile) %>
-  <%= @user.email %><br>
+<div class="d-flex justify-content-center mt-4">
+  <div class="card" style="width: 35rem;">
+    <div class="card-body">
+      <h4 class="card-title text-center"><%= @user.name %> さん</h4>
+    </div>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item text-center"><h5><%= @user.age %> 歳</h5></li>
+        <li class="list-group-item card-text"><h6><自己紹介></h6>
+          <%= simple_format(@user.profile) %></li>
+        <li class="list-group-item text-right"><%= link_to 'アカウント情報編集', edit_user_path(current_user) %></li>
+      </ul>
+    </div>
+  </div>
 </div>
-
-<%= link_to 'アカウント情報編集', edit_user_path(current_user) %>
