@@ -1,13 +1,9 @@
 <% if logged_in? %>
   <%= render 'goals/goals', goals: @goals, good_log: @good_log %>
-
 <% else %>
-
   <div class="text-center">
     <h3>ようこそ、HabiLogへ！</h3>
-  
     <%= link_to 'アカウント作成', signup_path, class: 'btn btn-lg btn-primary' %>
     <%= link_to 'ログイン', login_path, class: 'btn btn-lg btn-success' %>
   </div>
-
 <% end %>
