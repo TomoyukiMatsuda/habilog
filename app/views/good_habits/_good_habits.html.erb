@@ -3,12 +3,12 @@
     <td><%= good_habit.name %></td>
     <td>
       <% if log?(Date.current, good_habit) %>
-        <%= link_to '元に戻す', good_log_path(good_habit), method: :delete, class: 'btn btn-secondary btn-sm' %>
+        <%= link_to 'やっぱり戻す..', good_log_path(good_habit), method: :delete, class: 'btn btn-secondary btn-sm' %>
       <% else %>
         <%= form_with model: good_log, local: true do |f| %>
           <%= f.hidden_field :log, value: 1 %>
           <%= f.hidden_field :good_habit_id, value: good_habit.id %>
-          <%= f.submit 'やれた！', class: 'btn btn-success btn-sm' %>
+          <%= f.submit '◯ やれた！', class: 'btn btn-success btn-sm' %>
         <% end %>
       <% end %>
     </td>

@@ -1,30 +1,28 @@
-<ul class="list-unstyled">
-  
+
   <% @goals.each do |goal| %>
-    <li class="media mb-3">
-      <div class="media-body">
-        <div>
-          <h5>＜目標＞</h5><span class="text-muted">目標設定時 <%= goal.created_at %></span>
-          <p><strong><%= goal.name %></strong></p>
+  
+    <h5>＜目標＞</h5>目標設定時 <%= goal.created_at %>
+    <p><strong><%= goal.name %></strong></p>
+    
+    <% goal.good_habits.each do |good_habit| %>
+    
+      <p>習慣：<%= good_habit.name %> 登録日:<%= l good_habit.created_at, format: :ymdw %></p>
+      
+      <p>現在<%= good_habit.days %>日目、<%= counts(good_habit) %>日間習慣化できています</p>
+      
+      <% if daily(good_habit) %>
+        <p><%= daily(good_habit) %>日連続中！</p>
+      <% end %>
+      
+    <% end %>
           
-          <% goal.good_habits.each do |good_habit| %>
-            <p>習慣：<%= good_habit.name %> 登録日:<%= l good_habit.created_at, format: :ymdw %></p>
-            
-            <p>現在<%= good_habit.days %>日目、<%= counts(good_habit) %>日間習慣化できています</p>
-            
-            <% if daily(good_habit) %>
-              <p><%= daily(good_habit) %>日連続中！</p>
-            <% end %>
-            
-          <% end %>
-          
-        </div>
-      </div>
-    </li>
   <% end %>
   
   <%= paginate @goals %>
-</ul>
+
+
+
+
 
 <h1>記録確認テスト用</h1>
 <% @good_logs.each do |good_log| %>
