@@ -1,34 +1,35 @@
+<% @goals.each do |goal| %>
 
-  <% @goals.each do |goal| %>
-  
-    <h5>＜目標＞</h5>目標設定時 <%= goal.created_at %>
-    <p><strong><%= goal.name %></strong></p>
-    
-    <% goal.good_habits.each do |good_habit| %>
-    
-      <p>習慣：<%= good_habit.name %> 登録日:<%= l good_habit.created_at, format: :ymdw %></p>
-      
-      <p>現在<%= good_habit.days %>日目、<%= counts(good_habit) %>日間習慣化できています</p>
-      
-      <% if daily(good_habit) %>
-        <p><%= daily(good_habit) %>日連続中！</p>
-      <% end %>
-      
-    <% end %>
-          
-  <% end %>
-  
-  <%= paginate @goals %>
+  <h4 class="text-center">目標：<%= goal.name %></h4>
+  <p class="text-right"><%= l goal.created_at %>(目標設定日)</p>
+  <div class="row">
+    <div class="box-2 col-sm-12">
+      <table class="table">
+        <thead>
+          <th>
+            やるべき習慣 今日までのがんばり★
+          </th>
+          <th></th>
+        </thead>
+        <tbody class="text-center">
 
+          <% goal.good_habits.each do |good_habit| %>
+            <tr>
+              <td><%= good_habit.name %> <%= l good_habit.created_at %>(習慣設定)</td>
+              <td>
+                現在<%= good_habit.days %>日目、<%= counts(good_habit) %>日間習慣化できています！
+                <% if daily(good_habit) %>
+                  <%= daily(good_habit) %>日連続中！
+                <% end %>
+              </td>
+            </tr>
+          <% end %>
 
-
-
-
-<h1>記録確認テスト用</h1>
-<% @good_logs.each do |good_log| %>
-  <div>
-    <h5>習慣:<%= good_log.good_habit.name %> 設定日:<%= l good_log.good_habit.created_at %></h5>
-    <p>チェック:<%= good_log.log %></p>
-    <p>完了日：<%= l good_log.created_at %></p>
+        </tbody>
+      </table>
+    </div>
   </div>
+  
 <% end %>
+
+<%= paginate @goals %>
