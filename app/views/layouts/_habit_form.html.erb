@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-sm-6 offset-sm-3">
+
+    <%= form_with(model: [goal, habit], local: true) do |f| %>
+      <%= render 'layouts/error_messages', model: f.object %>
+      
+      <div class="form-group">
+        <%= f.text_field :name, class: 'form-control' %>
+      </div>
+      <%= hidden_field_tag :goal_id, goal.id %>
+      <%= f.submit '習慣を登録（追加）', class: 'btn btn-primary btn-block' %>
+    <% end %>
+    <%= link_to '今は登録しない', goals_path %>
+    
+  </div>
+</div>

@@ -1,20 +1,12 @@
 <div class="text-center">
+  <h5>"<%= @goal.name %>"の達成に向けて</h5>
   <h1>「やるべき習慣」を追加しよう</h1>
 </div>
 
+<%= render 'layouts/habit_form', goal: @goal, habit: @good_habit %>
+
 <div class="row">
   <div class="col-sm-6 offset-sm-3">
-
-    <%= form_with(model: [@goal, @good_habit], local: true) do |f| %>
-      <%= render 'layouts/error_messages', model: f.object %>
-      
-      <div class="form-group">
-        <%= f.label :name, 'やるべき習慣' %>
-        <%= f.text_field :name, class: 'form-control' %>
-      </div>
-      <%= hidden_field_tag :goal_id, @goal.id %>
-      <%= f.submit '習慣を登録（追加）', class: 'btn btn-primary btn-block' %>
-    <% end %>
-    <%= link_to '今は登録しない', goals_path %>
+    <%= link_to '「やめるべき習慣」の登録に進む', new_goal_bad_habit_path(@goal.id) %>
   </div>
 </div>
