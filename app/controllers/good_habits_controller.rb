@@ -12,7 +12,7 @@ class GoodHabitsController < ApplicationController
     
     if @good_habit.save
       flash[:success] = "習慣を追加しました"
-      redirect_to goals_url
+      redirect_to new_goal_bad_habit_url(params[:goal_id])
     else
       @goal = Goal.find(params[:goal_id])
       @good_habit = GoodHabit.new
