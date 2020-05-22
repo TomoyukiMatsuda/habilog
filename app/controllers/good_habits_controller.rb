@@ -31,7 +31,7 @@ class GoodHabitsController < ApplicationController
   private
   
   def good_habit_params
-    params.require(:good_habit).permit(:name).merge(goal_id: params[:goal_id])
+    params.require(:good_habit).permit(:name, :goal_id)
   end
   
 end

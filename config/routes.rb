@@ -14,5 +14,6 @@ Rails.application.routes.draw do
   end
   
   resources :good_logs, only: [:create, :destroy]
+  resources :bad_logs, only: [:create, :destroy]
   resources :logs, only: [:index]
 end

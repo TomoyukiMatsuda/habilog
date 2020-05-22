@@ -2,7 +2,7 @@
   <tr>
     <td><%= good_habit.name %></td>
     <td>
-      <% if log?(Date.current, good_habit) %>
+      <% if log?(Date.current, good_habit.good_logs) %>
         <%= link_to 'やっぱり戻す..', good_log_path(good_habit), method: :delete, class: 'btn btn-secondary btn-sm' %>
       <% else %>
         <%= form_with model: good_log, local: true do |f| %>

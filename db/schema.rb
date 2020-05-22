@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_05_21_232107) do
+ActiveRecord::Schema.define(version: 2020_05_22_024604) do
 
   create_table "bad_habits", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name"
@@ -18,6 +18,14 @@ ActiveRecord::Schema.define(version: 2020_05_21_232107) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["goal_id"], name: "index_bad_habits_on_goal_id"
+  end
+
+  create_table "bad_logs", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "log"
+    t.bigint "bad_habit_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["bad_habit_id"], name: "index_bad_logs_on_bad_habit_id"
   end
 
   create_table "goals", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -55,6 +63,7 @@ ActiveRecord::Schema.define(version: 2020_05_21_232107) do
   end
 
   add_foreign_key "bad_habits", "goals"
+  add_foreign_key "bad_logs", "bad_habits"
   add_foreign_key "goals", "users"
   add_foreign_key "good_habits", "goals"
   add_foreign_key "good_logs", "good_habits"

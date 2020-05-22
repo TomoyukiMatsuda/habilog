@@ -1,0 +1,42 @@
+<div class="col-sm-6">
+  <table class="table">
+    <thead>
+      <th>
+        <% if habits == goal.good_habits %>
+          やるべき習慣
+        <% else %>
+          やめるべき習慣
+        <% end %>
+      </th>
+      <th></th>
+    </thead>
+    <tbody class="text-center">
+
+      <% habits.each do |habit| %>
+        <tr>
+          <td><%= habit.name %> <%= l habit.created_at %>(習慣設定)</td>
+          <td>
+            <% if habits == goal.good_habits %>
+              現在<%= days(habit) %>日目
+              <% if good_log_counts(habit) != 0 %>
+                <%= good_log_counts(habit) %>日間習慣化できています！
+              <% end %>
+              <% if good_daily(habit.good_logs) %>
+                <%= good_daily(habit.good_logs) %>日連続達成中！
+              <% end %>
+            <% else %>
+              現在<%= days(habit) %>日目
+              <% if bad_log_counts(habit) != 0 %>
+                <%= bad_log_counts(habit) %>日間やっていません！
+              <% end %>
+              <% if bad_daily(habit.bad_logs) %>
+                <%= bad_daily(habit.bad_logs) %>日連続やらず！
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+
+    </tbody>
+  </table>
+</div>
