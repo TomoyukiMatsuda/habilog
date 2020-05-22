@@ -1,5 +1,11 @@
 <% if logged_in? %>
-  <%= render 'goals/goals', goals: @goals, good_log: @good_log %>
+  <% @goals.each do |goal| %>
+    <h4 class="text-center">目標：<%= goal.name %></h4>
+    <div class="row">
+      <%= render 'toppages/habits', goal: goal, log: @good_log %>
+      <%= render 'toppages/habits', goal: goal, log: @bad_log %>
+    </div>
+  <% end %>
 <% else %>
   <div class="text-center">
     <h3>ようこそ、HabiLogへ！</h3>

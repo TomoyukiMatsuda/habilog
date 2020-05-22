@@ -1,5 +1,6 @@
 <div class="col-sm-6">
   <table class="table">
+    
     <thead>
       <th>
         <% if habits == goal.good_habits %>
@@ -10,8 +11,8 @@
       </th>
       <th></th>
     </thead>
+    
     <tbody class="text-center">
-      
       <% habits.each do |habit| %>
         <tr>
           <td><%= habit.name %></td>
@@ -24,8 +25,8 @@
           </td>
         </tr>
       <% end %>
-
     </tbody>
+    
   </table>
 </div>
 

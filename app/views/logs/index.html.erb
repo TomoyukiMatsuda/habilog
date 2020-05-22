@@ -1,33 +1,10 @@
 <% @goals.each do |goal| %>
 
-  <h4 class="text-center">目標：<%= goal.name %></h4>
+  <h4 class="text-center">目標：<%= goal.name %>に向けた今日までのがんばり</h4>
   <p class="text-right"><%= l goal.created_at %>(目標設定日)</p>
   <div class="row">
-    <div class="box-2 col-sm-12">
-      <table class="table">
-        <thead>
-          <th>
-            やるべき習慣 今日までのがんばり★
-          </th>
-          <th></th>
-        </thead>
-        <tbody class="text-center">
-
-          <% goal.good_habits.each do |good_habit| %>
-            <tr>
-              <td><%= good_habit.name %> <%= l good_habit.created_at %>(習慣設定)</td>
-              <td>
-                現在<%= good_habit.days %>日目、<%= counts(good_habit) %>日間習慣化できています！
-                <% if daily(good_habit) %>
-                  <%= daily(good_habit) %>日連続中！
-                <% end %>
-              </td>
-            </tr>
-          <% end %>
-
-        </tbody>
-      </table>
-    </div>
+    <%= render 'habit_logs', goal: goal, habits: goal.good_habits %>
+    <%= render 'habit_logs', goal: goal, habits: goal.bad_habits %>
   </div>
   
 <% end %>

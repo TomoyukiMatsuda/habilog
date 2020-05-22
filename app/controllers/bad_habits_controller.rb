@@ -31,7 +31,7 @@ class BadHabitsController < ApplicationController
   private
   
   def bad_habit_params
-    params.require(:bad_habit).permit(:name).merge(goal_id: params[:goal_id]) # なぜmergeが必要か？permitのカラム指定じゃダメなの？
+    params.require(:bad_habit).permit(:name, :goal_id) # なぜmergeが必要か？permitのカラム指定じゃダメなの？
   end
   
 end

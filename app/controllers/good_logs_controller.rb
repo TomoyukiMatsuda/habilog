@@ -4,7 +4,7 @@ class GoodLogsController < ApplicationController
     good_log = GoodLog.new(good_log_params)
     
     if good_log.save
-      flash[:success] = '習慣を完了しました'
+      flash[:success] = '「やるべき習慣」を達成！'
       redirect_back(fallback_location: root_url)
     else
       @good_log = GoodLog.new
@@ -15,8 +15,9 @@ class GoodLogsController < ApplicationController
   
   def destroy
     good_habit = GoodHabit.find(params[:id])
-    good_habit.unfinished
-    flash[:success] = '習慣を未完了に変更しました'
+    good_logs = good_habit.good_logs
+    unfinished(good_logs)
+    flash[:warning] = '習慣の状態を元に戻しました'
     redirect_back(fallback_location: root_url)
   end
   

@@ -1,0 +1,2 @@
+module BadLogsHelper
+end

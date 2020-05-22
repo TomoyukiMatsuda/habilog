@@ -7,7 +7,7 @@
       <div class="form-group">
         <%= f.text_field :name, class: 'form-control' %>
       </div>
-      <%= hidden_field_tag :goal_id, goal.id %>
+      <%= f.hidden_field :goal_id, value: goal.id %>
       <%= f.submit '習慣を登録（追加）', class: 'btn btn-primary btn-block' %>
     <% end %>
     <%= link_to '今は登録しない', goals_path %>
