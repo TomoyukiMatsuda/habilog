@@ -52,14 +52,21 @@ module LogsHelper
   end
   
   # やめるべき習慣連続で絶っている日数計算
-  def bad_daily(logs)
-    unless log?(Date.yesterday, logs) == false && log?(Date.current, logs) == false
-      today = Date.current
-      last_log = Date.parse(I18n.l logs.last.created_at)
-      record = (today - last_log).to_i
-      # logが無い(0)の場合はfalse
-      if record != 0
-        return record
+  def bad_daily(logs, habit)
+    # 昨日と今日のlogが無い場合に実行
+    if log?(Date.yesterday, logs) == false && log?(Date.current, logs) == false
+      
+      if logs.last
+        today = Date.current
+        last_log = Date.parse(I18n.l logs.last.created_at)
+        record = (today - last_log).to_i
+        
+        # logが無い(0)の場合はfalse
+        if record != 0
+          record
+        end
+      else
+        days(habit)
       end
     end
   end
