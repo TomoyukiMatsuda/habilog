@@ -1,12 +1,13 @@
+<h3 class="mb-3">＜<%= current_user.name %>さんの 今日までのがんばり！＞</h3>
 <% @goals.each do |goal| %>
-
-  <h4 class="text-center">目標：<%= goal.name %>に向けた今日までのがんばり</h4>
-  <p class="text-right"><%= l goal.created_at %>(目標設定日)</p>
-  <div class="row">
-    <%= render 'habit_logs', goal: goal, habits: goal.good_habits %>
-    <%= render 'habit_logs', goal: goal, habits: goal.bad_habits %>
+  <div class="card mb-4">
+    <h4 class="card-header text-center bg-dark text-white">"<%= goal.name %>"に向けたがんばり<small class="text-right">(<%= l goal.created_at %>~)</small></h4>
+    <div class="card-body">
+      <div class="row">
+        <%= render 'habit_logs', goal: goal, habits: goal.good_habits %>
+        <%= render 'habit_logs', goal: goal, habits: goal.bad_habits %>
+      </div>
+    </div>
   </div>
-  
 <% end %>
-
 <%= paginate @goals %>

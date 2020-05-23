@@ -1,7 +1,8 @@
 <% if logged_in? %>
+<h3 class="mb-3">＜目標に向けた習慣を毎日チェック！＞</h3>
 <% @goals.each do |goal| %>
   <div class="card mb-4">
-    <h4 class="card-header text-center">目標：<%= goal.name %></h4>
+    <h4 class="card-header text-center text-white bg-dark">目標：<%= goal.name %></h4>
     <div class="card-body">
       <div class="row">
         <%= render 'habits', goal: goal, log: @good_log %>
@@ -15,7 +16,10 @@
 <% else %>
   <div class="text-center">
     <h3>ようこそ、HabiLogへ！</h3>
-    <%= link_to 'アカウント作成', signup_path, class: 'btn btn-lg btn-primary' %>
-    <%= link_to 'ログイン', login_path, class: 'btn btn-lg btn-success' %>
+    <h3>HabiLogで習慣を身につけ、目標を達成しよう！</h3>
+    <div class="mt-5">
+      <%= link_to 'アカウント作成', signup_path, class: 'btn btn-lg btn-primary mr-2' %>
+      <%= link_to 'ログイン', login_path, class: 'btn btn-lg btn-success ml-2' %>
+    </div>
   </div>
 <% end %>
