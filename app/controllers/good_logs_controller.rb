@@ -1,5 +1,4 @@
 class GoodLogsController < ApplicationController
-  before_action :require_user_logged_in
 
   def create
     good_log = GoodLog.new(good_log_params)
