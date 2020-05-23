@@ -1,9 +1,9 @@
 class BadHabitsController < ApplicationController
   before_action :require_user_logged_in
-  # correct_user実装する？
+  before_action :destroy_correct_user, only: :destroy
+  before_action :habit_correct_user, only: [:new, :create]
 
   def new
-    @goal = Goal.find(params[:goal_id])
     @bad_habit = BadHabit.new
   end
   
@@ -22,7 +22,6 @@ class BadHabitsController < ApplicationController
   end
   
   def destroy
-    @bad_habit = BadHabit.find(params[:id])
     @bad_habit.destroy
     flash[:success] = '習慣を削除しました'
     redirect_back(fallback_location: goals_url)
@@ -34,4 +33,12 @@ class BadHabitsController < ApplicationController
     params.require(:bad_habit).permit(:name, :goal_id) # なぜmergeが必要か？permitのカラム指定じゃダメなの？
   end
   
+  def destroy_correct_user
+    goal = current_user.goals.find_by(id: params[:goal_id])
+    @bad_habit = goal.bad_habits.find_by(id: params[:id])
+    unless @bad_habit
+      flash[:danger] = 'エラー'
+      redirect_to root_url
+    end
+  end
 end

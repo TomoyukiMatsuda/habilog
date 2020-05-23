@@ -11,6 +11,14 @@ class ApplicationController < ActionController::Base
     end
   end
   
+  def habit_correct_user
+    @goal = current_user.goals.find_by(id: params[:goal_id])
+    unless @goal
+      flash[:danger] = 'エラー'
+      redirect_to root_url
+    end
+  end
+  
   # 今日完了済みの習慣の状態を元に戻す(記録を削除)
   def unfinished(logs)
     today = I18n.l Date.current

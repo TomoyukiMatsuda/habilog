@@ -1,10 +1,11 @@
 class BadLogsController < ApplicationController
+  before_action :require_user_logged_in
   
   def create
     bad_log = BadLog.new(bad_log_params)
     
     if bad_log.save
-      flash[:warning] = '「やめるべき習慣」をやってしまいました…'
+      flash[:warning] = 'やめるべき習慣をやってしまいました…'
       redirect_back(fallback_location: root_url)
     else
       @bad_log = BadLog.new
