@@ -29,8 +29,8 @@
               <% if bad_log_counts(habit) != 0 %>
                 <%= bad_log_counts(habit) %>日間やっていません！
               <% end %>
-              <% if bad_daily(habit.bad_logs) %>
-                <%= bad_daily(habit.bad_logs) %>日連続やらず！
+              <% if bad_daily(habit.bad_logs, habit) %>
+                <%= bad_daily(habit.bad_logs, habit) %>日連続やってません！
               <% end %>
             <% end %>
           </td>

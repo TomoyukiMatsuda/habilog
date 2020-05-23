@@ -1,32 +1,28 @@
 <div class="col-sm-6">
-  <table class="table">
+  <div class="card">
     
-    <thead>
-      <th>
-        <% if habits == goal.good_habits %>
-          やるべき習慣
-        <% else %>
-          やめるべき習慣
-        <% end %>
-      </th>
-      <th></th>
-    </thead>
-    
-    <tbody class="text-center">
-      <% habits.each do |habit| %>
-        <tr>
-          <td><%= habit.name %></td>
-          <td>
+    <h5 class="card-header">
+      <% if habits == goal.good_habits %>
+        やるべき習慣
+      <% else %>
+        やめるべき習慣
+      <% end %>
+    </h5>
+        
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <% habits.each do |habit| %>
+          <li class="list-group-item d-flex justify-content-between">
+            <%= habit.name %>
             <% if habits == goal.good_habits %>
               <%= link_to '習慣を削除', "/goals/#{goal.id}/good_habits/#{habit.id}", method: :delete, data: { confirm: '習慣を削除してもよろしいですか？' } %>
             <% else %>
               <%= link_to '習慣を削除', "/goals/#{goal.id}/bad_habits/#{habit.id}", method: :delete, data: { confirm: '習慣を削除してもよろしいですか？' } %>
             <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </tbody>
-    
-  </table>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>
 

@@ -1,23 +1,20 @@
 <div class="col-sm-6">
-  <table class="table">
-    <thead>
-      <th>
-        <% if log == @good_log %>
-          <h5>やるべき習慣</h5>
-        <% else %>
-          <h5>やめるべき習慣</h5>
-        <% end %>
-      </th>
-      <th></th>
-    </thead>
-    
-    <tbody class="text-center">
+  <div class="card">
+    <h5 class="card-header">
       <% if log == @good_log %>
-        <%= render 'good_habits', goal: goal, good_log: @good_log %>
+        やるべき習慣
       <% else %>
-        <%= render 'bad_habits', goal: goal, bad_log: @bad_log %>
+        やめるべき習慣
       <% end %>
-    </tbody>
-    
-  </table>
+    </h5>
+    <div class="card-body">
+      <ul class="list-group list-group-flush">
+        <% if log == @good_log %>
+          <%= render 'good_habits', goal: goal, good_log: @good_log %>
+        <% else %>
+          <%= render 'bad_habits', goal: goal, bad_log: @bad_log %>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </div>
