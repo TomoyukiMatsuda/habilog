@@ -1,10 +1,11 @@
 class GoodLogsController < ApplicationController
-  
+  before_action :require_user_logged_in
+
   def create
     good_log = GoodLog.new(good_log_params)
     
     if good_log.save
-      flash[:success] = '「やるべき習慣」を達成！'
+      flash[:success] = 'やるべき習慣を達成！'
       redirect_back(fallback_location: root_url)
     else
       @good_log = GoodLog.new

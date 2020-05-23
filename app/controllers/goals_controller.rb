@@ -1,4 +1,5 @@
 class GoalsController < ApplicationController
+  before_action :require_user_logged_in
   before_action :correct_user, only: [:edit, :update, :destroy]
 
   def index
@@ -6,7 +7,7 @@ class GoalsController < ApplicationController
   end
 
   def new
-    @goal = Goal.new
+    @goal = current_user.goals.build
   end
 
   def create
@@ -49,6 +50,7 @@ class GoalsController < ApplicationController
   def correct_user
     @goal = current_user.goals.find_by(id: params[:id])
     unless @goal
+      flash[:danger] = 'エラー'
       redirect_to root_url
     end
   end
