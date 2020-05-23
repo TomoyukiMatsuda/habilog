@@ -1,11 +1,17 @@
 <% if logged_in? %>
-  <% @goals.each do |goal| %>
-    <h4 class="text-center">目標：<%= goal.name %></h4>
-    <div class="row">
-      <%= render 'toppages/habits', goal: goal, log: @good_log %>
-      <%= render 'toppages/habits', goal: goal, log: @bad_log %>
+<% @goals.each do |goal| %>
+  <div class="card mb-4">
+    <h4 class="card-header text-center">目標：<%= goal.name %></h4>
+    <div class="card-body">
+      <div class="row">
+        <%= render 'habits', goal: goal, log: @good_log %>
+        <%= render 'habits', goal: goal, log: @bad_log %>
+      </div>
     </div>
-  <% end %>
+  </div>
+<% end %>
+<%= paginate @goals %>
+
 <% else %>
   <div class="text-center">
     <h3>ようこそ、HabiLogへ！</h3>

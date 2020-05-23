@@ -1,16 +1,15 @@
 <% goal.bad_habits.each do |bad_habit| %>
-  <tr>
-    <td><%= bad_habit.name %></td>
-    <td>
-      <% if log?(Date.current, bad_habit.bad_logs) %>
-        <%= link_to 'やっぱり戻す！', bad_log_path(bad_habit), method: :delete, class: 'btn btn-success btn-sm' %>
-      <% else %>
-        <%= form_with model: bad_log, local: true do |f| %>
-          <%= f.hidden_field :log, value: 1 %>
-          <%= f.hidden_field :bad_habit_id, value: bad_habit.id %>
-          <%= f.submit 'やっちゃった..', class: 'btn btn-info btn-sm' %>
-        <% end %>
+  <li class="list-group-item d-flex justify-content-between">
+    <%= bad_habit.name %>
+
+    <% if log?(Date.current, bad_habit.bad_logs) %>
+      <%= link_to 'やっぱり戻す！', bad_log_path(bad_habit), method: :delete, class: 'btn btn-success btn-sm' %>
+    <% else %>
+      <%= form_with model: bad_log, local: true do |f| %>
+        <%= f.hidden_field :log, value: 1 %>
+        <%= f.hidden_field :bad_habit_id, value: bad_habit.id %>
+        <%= f.submit 'やっちゃった..', class: 'btn btn-info btn-sm' %>
       <% end %>
-    </td>
-  </tr>
+    <% end %>
+  </li>  
 <% end %>
