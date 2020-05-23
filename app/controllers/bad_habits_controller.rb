@@ -1,5 +1,4 @@
 class BadHabitsController < ApplicationController
-  before_action :require_user_logged_in
   before_action :destroy_correct_user, only: :destroy
   before_action :habit_correct_user, only: [:new, :create]
 

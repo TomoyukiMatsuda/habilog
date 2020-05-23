@@ -1,6 +1,5 @@
 class BadLogsController < ApplicationController
-  before_action :require_user_logged_in
-  
+
   def create
     bad_log = BadLog.new(bad_log_params)
     
