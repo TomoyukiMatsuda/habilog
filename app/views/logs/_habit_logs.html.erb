@@ -20,7 +20,7 @@
                   <h5><%= good_log_counts(habit) %>日<small>（習慣化日数）</small></h5>
                 <% end %>
                 <% if good_daily(habit.good_logs) %>
-                  <h5><strong class="text-danger">現在 <%= good_daily(habit.good_logs) %>日連続</strong> 継続中</h5>
+                  <h5>現在<strong class="text-danger"> <%= good_daily(habit.good_logs) %>日連続！</strong></h5>
                 <% end %>
                 
               <% else %>
@@ -28,7 +28,7 @@
                   <h5><%= bad_log_counts(habit) %>日<small>（やめた日数）</small></h5>
                 <% end %>
                 <% if bad_daily(habit.bad_logs, habit) %>
-                  <h5><strong class="text-danger">現在 <%= bad_daily(habit.bad_logs, habit) %>日連続</strong> 継続中</h5>
+                  <h5>現在<strong class="text-danger"> <%= bad_daily(habit.bad_logs, habit) %>日連続！</strong></h5>
                 <% end %>
               <% end %>
               
