@@ -3,7 +3,7 @@
     <%= bad_habit.name %>
 
     <% if log?(Date.current, bad_habit.bad_logs) %>
-      <%= link_to 'やっぱり戻す', bad_log_path(bad_habit), method: :delete, class: 'btn btn-sm btn-outline-primary' %>
+      <%= link_to 'やっぱり戻す', bad_log_path(bad_habit.bad_logs.last), method: :delete, class: 'btn btn-sm btn-outline-primary' %>
     <% else %>
       <%= form_with model: bad_log, local: true do |f| %>
         <%= f.hidden_field :log, value: 1 %>

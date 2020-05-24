@@ -1,6 +1,5 @@
 class GoodHabitsController < ApplicationController
-  before_action :destroy_correct_user, only: :destroy
-  before_action :habit_correct_user, only: [:new, :create]
+  before_action :habit_correct_user
   
   
   def new
@@ -22,7 +21,8 @@ class GoodHabitsController < ApplicationController
   end
 
   def destroy
-    @good_habit.destroy
+    good_habit = @goal.good_habits.find_by(id: params[:id])
+    good_habit.destroy
     flash[:success] = '習慣を削除しました'
     redirect_back(fallback_location: goals_url)
   end
@@ -31,14 +31,5 @@ class GoodHabitsController < ApplicationController
   
   def good_habit_params
     params.require(:good_habit).permit(:name, :goal_id)
-  end
-  
-  def destroy_correct_user
-    goal = current_user.goals.find_by(id: params[:goal_id])
-    @good_habit = goal.good_habits.find_by(id: params[:id])
-    unless @good_habit
-      flash[:danger] = 'エラー'
-      redirect_to root_url
-    end
   end
 end
