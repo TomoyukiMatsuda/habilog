@@ -7,6 +7,28 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    models:
+      user: ユーザ
+      goal: 目標
+      good_habit: やるべき習慣
+      bad_habit: やめるべき習慣
+      good_log: 良い記録
+      bad_log: 良くない記録
+    attributes:
+      user:
+        id: ID
+        name: 名前
+        age: 年齢
+        profile: プロフィール
+        email: メールアドレス
+        password: パスワード
+        password_confirmation: 確認用パスワード
+      goal:
+        name: 目標
+      good_habit:
+        name: やるべき習慣
+      bad_habit:
+        name: やめるべき習慣
   date:
     abbr_day_names:
     - 日
@@ -119,7 +141,7 @@ ja:
       greater_than: は%{count}より大きい値にしてください
       greater_than_or_equal_to: は%{count}以上の値にしてください
       inclusion: は一覧にありません
-      invalid: は不正な値です
+      invalid: が不正な値です
       less_than: は%{count}より小さい値にしてください
       less_than_or_equal_to: は%{count}以下の値にしてください
       model_invalid: 'バリデーションに失敗しました: %{errors}'
