@@ -1,16 +1,22 @@
 <% if logged_in? %>
-<h3 class="mb-3">＜目標に向けた習慣を毎日チェック！＞</h3>
-<% @goals.each do |goal| %>
-  <div class="card mb-4">
-    <h4 class="card-header text-center text-white bg-dark">目標：<%= goal.name %></h4>
-    <div class="card-body">
-      <div class="row">
-        <%= render 'habits', goal: goal, log: @good_log %>
-        <%= render 'habits', goal: goal, log: @bad_log %>
+  <h3 class="mb-3">
+    <% if @goals != [] %>
+      目標に向けた習慣を毎日チェック！
+    <% else %>
+      目標と習慣を登録しよう！
+    <% end %>
+  </h3>
+  <% @goals.each do |goal| %>
+    <div class="card mb-4">
+      <h4 class="card-header text-center text-white bg-dark">目標：<%= goal.name %></h4>
+      <div class="card-body">
+        <div class="row">
+          <%= render 'habits', goal: goal, log: @good_log %>
+          <%= render 'habits', goal: goal, log: @bad_log %>
+        </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 <%= paginate @goals %>
 
 <% else %>
