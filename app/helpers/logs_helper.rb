@@ -65,7 +65,7 @@ module LogsHelper
         if record != 0
           record
         end
-      else
+      elsif days(habit) != 1
         days(habit)
       end
     end
