@@ -1,6 +1,18 @@
 module LogsHelper
   
-  # 習慣登録日からの何日目かを計算する
+  # 引数logsに対して引数日のログが有るかどうかチェック
+  def log?(date, logs)
+    day = I18n.l date
+    
+    log_days = []
+    logs.each do |log|
+      log_day = I18n.l log.created_at
+      log_days.push(log_day)
+    end
+    log_days.include?(day)
+  end
+  
+  # 習慣登録日から何日目かを計算する
   def days(habit)
     today = Date.current
     day = Date.parse(I18n.l habit.created_at) # xxxx-xx-xxに変換して格納
@@ -15,18 +27,6 @@ module LogsHelper
   # bad_logsレコードの数を取得
   def bad_log_counts(bad_habit)
     (days(bad_habit) - bad_habit.bad_logs.count).to_i
-  end
-  
-  # 引数ハビットに対して引数日のログが有るかどうかチェックする
-  def log?(date, logs)
-    day = I18n.l date
-    
-    log_days = []
-    logs.each do |log|
-      log_day = I18n.l log.created_at
-      log_days.push(log_day)
-    end
-    log_days.include?(day)
   end
 
   # やるべき習慣連続日数の記録計算
@@ -51,7 +51,7 @@ module LogsHelper
     end
   end
   
-  # やめるべき習慣連続で絶っている日数計算
+  # やめるべき習慣やってない期間（連続日数）計算
   def bad_daily(logs, habit)
     # 昨日と今日のlogが無い場合に実行
     if log?(Date.yesterday, logs) == false && log?(Date.current, logs) == false
