@@ -1,4 +1,8 @@
-<h3 class="mb-3"><%= current_user.name %>さんの 今日までのがんばり</h3>
+<% if @goals != [] %>
+  <h3 class="mb-3"><%= current_user.name %>さんの 今日までのがんばり</h3>
+<% else %>
+  <%= render 'layouts/no_goals' %>
+<% end %>
 <% @goals.each do |goal| %>
   <div class="card mb-4">
     <h4 class="card-header text-center bg-dark text-white">"<%= goal.name %>"に向けたがんばり<small class="text-right">(<%= l goal.created_at %>~)</small></h4>

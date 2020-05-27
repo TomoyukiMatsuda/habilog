@@ -1,11 +1,9 @@
 <% if logged_in? %>
-  <h3 class="mb-3">
-    <% if @goals != [] %>
-      目標に向けた習慣を毎日チェック！
-    <% else %>
-      目標と習慣を登録しよう！
-    <% end %>
-  </h3>
+  <% if @goals != [] %>
+    <h3 class="mb-3">目標に向けた習慣を毎日チェック！</h3>
+  <% else %>
+    <%= render 'layouts/no_goals' %>
+  <% end %>
   <% @goals.each do |goal| %>
     <div class="card mb-4">
       <h4 class="card-header text-center text-white bg-dark">目標：<%= goal.name %></h4>

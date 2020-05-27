@@ -1,6 +1,6 @@
 module LogsHelper
   
-  # 引数logsに対して引数日のログが有るかどうかチェック
+  # 引数logsに対して引数日dateのログが有るかどうかチェック
   def log?(date, logs)
     day = I18n.l date
     
