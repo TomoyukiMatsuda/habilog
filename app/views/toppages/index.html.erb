@@ -25,5 +25,12 @@
       <%= link_to 'アカウント作成', signup_path, class: 'btn btn-lg btn-primary mr-2' %>
       <%= link_to 'ログイン', login_path, class: 'btn btn-lg btn-success ml-2' %>
     </div>
+    <%= form_with url: login_path, scope: :session, local: true, class: "guest-account-form" do |f| %>
+      <%= f.hidden_field :email, value: "guest_user@mail.com" %>
+      <%= f.hidden_field :password, value: "guest_user" %>
+      <div class="guest-account-form__submit">
+        <%= f.submit 'ゲストユーザでアプリを体験する', class: 'btn btn-lg guest-account-form__submit--btn' %>
+      </div>
+    <% end %>
   </div>
 <% end %>

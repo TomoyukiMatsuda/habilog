@@ -1,0 +1,29 @@
+// ゲストユーザログインボタン
+.guest-account-form {
+  margin: 65px auto 15px;
+  max-width: 304px;
+  font-size: 18px;
+
+  &__submit {
+    margin: 0 auto 15px;
+
+    &--btn {
+      width: 100%;
+      color: #fff;
+      background-color: #eb8686;
+      font-size: 18px;
+
+      &:hover {
+        background-color: #ffb5b5;
+        color: #eb8686;
+      }
+    }
+  }
+}
+
+.unable-to-edit-message {
+  text-align: center;
+  margin-bottom: 10px;
+  font-weight: bold;
+  color: rgb(250, 80, 37);
+}
