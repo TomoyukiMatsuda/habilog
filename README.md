@@ -1,24 +1,93 @@
-# README
+# 🏃 HabiLog
+### 「目標に向けた習慣化」を目指すアプリです。
+##### （初めて作成したオリジナルアプリです。）
+<br>
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 💬 なぜこのアプリを開発したのか？
+### 「目標達成による成功体験」を提供するサービスを作りたかったから！！
+<br>
 
-Things you may want to cover:
+何かを達成するためには、<br>
+**「目標の明文化」** と **「目標達成に向けた行動」** が必須だと考えています。<br>
 
-* Ruby version
+しかし、人は何か成し遂げたいことがあっても、行動をしているうちにいつの間にか目標を見失っていたり、なんのために行動しているのかわからなくなってしまう瞬間があると思います。<br>
 
-* System dependencies
+目標を見失わず行動を継続することで「成功体験という喜びを誰かに提供したい」という気持ちを込めながら作ったアプリです。
 
-* Configuration
+<br>
+<br>
 
-* Database creation
+## :memo: 何ができるサービスか？
+- 目標と、目標に対する「やるべき習慣」「やめるべき習慣」を設定。
+- 目標に対する習慣を毎日チェックし、頑張り（習慣の継続日数）の振り返りができる。
+<br>
 
-* Database initialization
+## 🌐 アプリURL
 
-* How to run the test suite
+### **https://habilog.herokuapp.com/**
+<br>
+※ゲストユーザアカウントをご用意しておりますので、ぜひ気軽に触ってみてください。
+<br>
+<br>
 
-* Services (job queues, cache servers, search engines, etc.)
+## ⭐ 使い方
+1. 「目標」および目標達成に向けた「やるべき習慣」「やめるべき習慣」を登録
+2. &nbsp; １日１回習慣をチェック<br>
+ （「やるべき習慣」→ やれたらチェック、「やめるべき習慣」→ やっちゃったらチェック)
+3. &nbsp; 習慣の継続状況を振り返る
+<br>
 
-* Deployment instructions
+## 💪 力を入れたポイント
+**機能面**
+1. 習慣チェック機能を1日１回に限定
+2. 習慣継続日数を計算
+3. 習慣の継続日数に（連続で継続できているかなど）よって view での表示を切り替え
 
-* ...
+&nbsp; 特に 2, 3 の機能のロジックを考える部分については、かなり時間をかけてやっと実装できました。
+<br>
+<br>
+
+## 特に課題だと感じる部分（要改善点）
+- 読みやすいコードを書く技術<br>
+  わかりやすいファイル名、メソッド名、変数名など誰が見ても読みやすいコードを記述する、というのは本当に難しいと感じております。
+- フロントサイド UI/UX を意識したデザインおよびレイアウト<br>
+  現状フロント部分はBootstrapに頼っており、HTML / CSSの技術をレベルアップさせる必要があります。
+<br>
+<br>
+
+## 📖 機能一覧
+- ユーザー登録、ログイン
+- ユーザ情報編集
+- 目標、習慣設定
+- 習慣チェック（1日１回まで）
+- 習慣合計実施日数のカウント
+- 習慣連続実施日数のカウント
+<br>
+
+##  💻 使用技術
+**●言語**
+
+- Ruby: 2.5.3
+- Ruby on Rails: 5.2.2
+- Sass
+<br>
+
+**●ライブラリーおよび Gem**
+
+- bcrypt
+- pry-byebug
+- kaminari
+- Bootstrap
+- i18n_generators
+<br>
+
+## :scroll: ER図（DB設計）
+<img width="1283" alt="HabiLog_ER図.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/621162/2f9c1bee-ddaf-1be6-c731-b3aa0c6c8ea7.png">
+
+<br>
+<br>
+
+## :blush: 作者について
+- [GitHub](https://github.com/TomoyukiMatsuda)
+- [Twitter](https://twitter.com/tkmd35)
+- [Qiita](https://qiita.com/tkmd35)
