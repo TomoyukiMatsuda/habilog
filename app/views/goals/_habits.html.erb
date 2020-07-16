@@ -14,10 +14,14 @@
         <% habits.each do |habit| %>
           <li class="list-group-item list-group-item-action d-flex justify-content-between">
             <%= habit.name %>
-            <% if habits == goal.good_habits %>
-              <%= link_to '習慣を削除', "/goals/#{goal.id}/good_habits/#{habit.id}", method: :delete, data: { confirm: '「習慣」に関連した「がんばり」も一緒に削除されます。よろしいですか？' }, class: 'text-danger' %>
+            <% if current_user.email == "guest_user@mail.com" %>
+              <div></div>
             <% else %>
-              <%= link_to '習慣を削除', "/goals/#{goal.id}/bad_habits/#{habit.id}", method: :delete, data: { confirm: '「習慣」に関連した「がんばり」も一緒に削除されます。よろしいですか？' }, class: 'text-danger' %>
+              <% if habits == goal.good_habits %>
+                <%= link_to '習慣を削除', "/goals/#{goal.id}/good_habits/#{habit.id}", method: :delete, data: { confirm: '「習慣」に関連した「がんばり」も一緒に削除されます。よろしいですか？' }, class: 'text-danger' %>
+              <% else %>
+                <%= link_to '習慣を削除', "/goals/#{goal.id}/bad_habits/#{habit.id}", method: :delete, data: { confirm: '「習慣」に関連した「がんばり」も一緒に削除されます。よろしいですか？' }, class: 'text-danger' %>
+              <% end %>
             <% end %>
           </li>
         <% end %>
